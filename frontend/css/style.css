@@ -1,0 +1,339 @@
+/* ==========================================
+   TaskGuard
+   style.css
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #eef1f5;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+code, .code-tag {
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+/* ==========================================
+   NAVBAR
+   ========================================== */
+
+.tg-topbar {
+    height: 64px;
+    background: #1f2a37;
+    border-bottom: 3px solid #2f8f7a;
+}
+
+.tg-brand {
+    font-size: 21px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.tg-brand i {
+    color: #2f8f7a;
+    margin-right: 6px;
+}
+
+.role-pill {
+    background: #2f8f7a;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    text-transform: uppercase;
+}
+
+/* ==========================================
+   SIDEBAR
+   ========================================== */
+
+.tg-sidebar {
+    background: #263544;
+    min-height: calc(100vh - 64px);
+}
+
+.tg-sidebar .list-group-item {
+    background: #263544;
+    color: #cbd5e1;
+    border: none;
+    border-left: 3px solid transparent;
+    padding: 14px 20px;
+    font-size: 15px;
+}
+
+.tg-sidebar .list-group-item i {
+    margin-right: 10px;
+    width: 18px;
+    display: inline-block;
+}
+
+.tg-sidebar .list-group-item:hover {
+    background: #30414f;
+    color: #fff;
+}
+
+.tg-sidebar .active {
+    background: #30414f;
+    color: #fff;
+    border-left: 3px solid #2f8f7a;
+    font-weight: 600;
+}
+
+/* ==========================================
+   CARDS
+   ========================================== */
+
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+.stat-card {
+    border-left: 4px solid #2f8f7a;
+}
+
+.stat-card .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.stat-card .stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #6b7785;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   FORMS
+   ========================================== */
+
+label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-control, .form-select, textarea {
+    border-radius: 6px;
+}
+
+.form-control:focus, .form-select:focus, textarea:focus {
+    border-color: #2f8f7a;
+    box-shadow: 0 0 0 0.2rem rgba(47, 143, 122, 0.2);
+}
+
+.field-error {
+    color: #c0392b;
+    font-size: 12.5px;
+    margin-top: 3px;
+    display: block;
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
+.btn {
+    border-radius: 6px;
+}
+
+.btn-brand {
+    background: #2f8f7a;
+    border-color: #2f8f7a;
+    color: #fff;
+}
+
+.btn-brand:hover {
+    background: #257a68;
+    border-color: #257a68;
+    color: #fff;
+}
+
+/* ==========================================
+   TABLE
+   ========================================== */
+
+.table thead {
+    background: #1f2a37;
+    color: #fff;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table-card {
+    overflow-x: auto;
+}
+
+/* ==========================================
+   BADGES
+   ========================================== */
+
+.badge-teal { background: #2f8f7a; color: #fff; }
+.badge-amber { background: #d9992a; color: #fff; }
+.badge-slate { background: #6b7785; color: #fff; }
+.badge-slate-dark { background: #495566; color: #fff; }
+.badge-green { background: #3f9142; color: #fff; }
+.badge-red { background: #c0392b; color: #fff; }
+
+/* ==========================================
+   CAPACITY BAR
+   ========================================== */
+
+.capacity-track {
+    background: #e2e6ea;
+    border-radius: 10px;
+    height: 8px;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.capacity-fill {
+    height: 100%;
+    background: #2f8f7a;
+}
+
+.capacity-fill.amber { background: #d9992a; }
+.capacity-fill.red { background: #c0392b; }
+
+.capacity-text {
+    font-size: 12px;
+    color: #6b7785;
+}
+
+/* ==========================================
+   LOGIN PAGE
+   ========================================== */
+
+.login-wrap {
+    background: linear-gradient(135deg, #1f2a37 0%, #2f8f7a 130%);
+    min-height: 100vh;
+}
+
+.login-card {
+    border-radius: 12px;
+    max-width: 440px;
+}
+
+.login-card .card-header {
+    background: #1f2a37;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* ==========================================
+   MISC
+   ========================================== */
+
+.empty-state {
+    text-align: center;
+    padding: 40px 15px;
+    color: #6b7785;
+}
+
+.empty-state i {
+    font-size: 40px;
+    color: #c7cdd4;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.filter-bar {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 768px) {
+    .tg-sidebar { min-height: auto; }
+}
+
+/* ==========================================
+   HOME PAGE - HERO
+   ========================================== */
+
+.hero-section {
+    background: linear-gradient(135deg, #1f2a37 0%, #2f8f7a 130%);
+}
+
+.hero-icon {
+    font-size: 56px;
+    color: #fff;
+}
+
+/* ==========================================
+   HOME PAGE - FEATURE CARDS
+   ========================================== */
+
+.feature-card {
+    background: #fff;
+    border: 1px solid #e5e9ee;
+    border-radius: 10px;
+    padding: 24px;
+    height: 100%;
+}
+
+.feature-card i {
+    font-size: 28px;
+    color: #2f8f7a;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.text-brand {
+    color: #2f8f7a;
+}
+
+/* ==========================================
+   HOME PAGE - CALL TO ACTION
+   ========================================== */
+
+.cta-section {
+    background: #1f2a37;
+}
+
+/* ==========================================
+   HOME PAGE - FOOTER
+   ========================================== */
+
+.tg-footer {
+    background: #161f29;
+}
+
+.tg-footer a {
+    color: #cbd5e1;
+    text-decoration: none;
+}
+
+.tg-footer a:hover {
+    color: #2f8f7a;
+}
+
+.tg-footer .text-muted {
+    color: #9aa8b8 !important;
+}
+
+.tg-footer .text-muted a {
+    color: #9aa8b8 !important;
+}
+
+.tg-footer .text-muted a:hover {
+    color: #2f8f7a !important;
+}

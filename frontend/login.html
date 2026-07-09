@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskGuard - Login</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-wrap d-flex align-items-center">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card shadow login-card mx-auto">
+                <div class="card-header text-center">
+                    <i class="bi bi-shield-lock-fill"></i> TaskGuard
+                </div>
+                <div class="card-body p-4">
+                    <p class="text-muted text-center mb-4">Sign in to manage your projects and tasks.</p>
+
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="text" id="email" class="form-control" placeholder="you@company.com" autocomplete="username">
+                            <span class="field-error" id="emailError"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" id="password" class="form-control" placeholder="Enter password" autocomplete="current-password">
+                                <button type="button" id="togglePassword" class="btn btn-outline-secondary">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                            <span class="field-error" id="passwordError"></span>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" id="loginBtn" class="btn btn-brand">
+                                <i class="bi bi-box-arrow-in-right"></i> Login
+                            </button>
+                        </div>
+                    </form>
+
+                    <hr>
+                    <p class="text-muted small mb-0 text-center">
+                        Accounts are provisioned by your Project Director.<br>
+                        Contact them if you don't have login credentials yet.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

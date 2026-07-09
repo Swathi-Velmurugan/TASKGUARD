@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskGuard - Project Task Management</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="tg-topbar d-flex align-items-center justify-content-between px-4">
+    <span class="tg-brand"><i class="bi bi-shield-lock-fill"></i>TaskGuard</span>
+    <div>
+        <a href="login.html" class="btn btn-brand btn-sm">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+        </a>
+    </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero-section text-white">
+    <div class="container text-center py-5">
+        <i class="bi bi-shield-lock-fill hero-icon"></i>
+        <h1 class="fw-bold mt-3">Manage Projects. Track Every Task. Stay in Control.</h1>
+        <p class="lead mt-3 mx-auto" style="max-width:700px;">
+            TaskGuard is a role-based project task management system built for teams that need
+            clear ownership, capacity tracking, and accountability from portfolio down to a single
+            logged hour.
+        </p>
+        <a href="login.html" class="btn btn-light btn-lg mt-3">
+            <i class="bi bi-box-arrow-in-right"></i> Get Started
+        </a>
+    </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="container py-5">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+            <h2 class="fw-bold mb-3">What is TaskGuard?</h2>
+            <p class="text-muted">
+                TaskGuard gives organizations a single place to plan project initiatives, break them
+                down into milestones and tasks, assign work to contributors, and review submitted
+                hours before they count toward delivery. Every action is protected behind secure,
+                JWT-based authentication and enforced by role-specific permissions.
+            </p>
+            <p class="text-muted">
+                Whether you're a Director overseeing budgets across a portfolio, a Manager
+                coordinating a delivery schedule, or a Contributor logging your daily work, TaskGuard
+                shows you exactly what you need and nothing you don't.
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow-sm p-4">
+                <h5 class="mb-3">Three roles, one system</h5>
+                <div class="d-flex align-items-start mb-3">
+                    <i class="bi bi-person-badge fs-4 text-brand me-3"></i>
+                    <div>
+                        <strong>Project Director</strong>
+                        <p class="text-muted small mb-0">Owns initiatives, budgets, and system accounts.</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-start mb-3">
+                    <i class="bi bi-person-workspace fs-4 text-brand me-3"></i>
+                    <div>
+                        <strong>Project Manager</strong>
+                        <p class="text-muted small mb-0">Plans milestones, creates tasks, and assigns work.</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-start">
+                    <i class="bi bi-person-check fs-4 text-brand me-3"></i>
+                    <div>
+                        <strong>Team Contributor</strong>
+                        <p class="text-muted small mb-0">Updates task status and logs completed hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section class="bg-white py-5">
+    <div class="container">
+        <h2 class="fw-bold text-center mb-5">What you can do</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-diagram-3"></i>
+                    <h5>Project Initiatives</h5>
+                    <p class="text-muted small">
+                        Create portfolio-level initiatives with allocated budgets, timelines, and
+                        real-time budget consumption tracking.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-flag"></i>
+                    <h5>Milestones</h5>
+                    <p class="text-muted small">
+                        Break initiatives into delivery phases with target dates and allocated hour
+                        budgets.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-list-check"></i>
+                    <h5>Tasks &amp; Assignment</h5>
+                    <p class="text-muted small">
+                        Assign work to contributors while the system enforces a 40-hour weekly
+                        capacity limit automatically.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-clipboard-check"></i>
+                    <h5>Work Submissions</h5>
+                    <p class="text-muted small">
+                        Contributors log hours and notes; managers approve or reject each submission
+                        with feedback.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-people"></i>
+                    <h5>Account Management</h5>
+                    <p class="text-muted small">
+                        Directors provision, edit, suspend, or remove system accounts across all
+                        three roles.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-shield-check"></i>
+                    <h5>Secure by Design</h5>
+                    <p class="text-muted small">
+                        Every request is authenticated with a signed JWT and checked against
+                        role-based access rules before it runs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CALL TO ACTION ================= -->
+<section class="cta-section text-white text-center py-5">
+    <h2 class="fw-bold mb-3">Ready to take control of your projects?</h2>
+    <p class="mb-4">Sign in with the account your Project Director provisioned for you.</p>
+    <a href="login.html" class="btn btn-light btn-lg">
+        <i class="bi bi-box-arrow-in-right"></i> Login to TaskGuard
+    </a>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="tg-footer text-light pt-5 pb-4">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <h5><i class="bi bi-shield-lock-fill"></i> TaskGuard</h5>
+                <p class="text-muted small">
+                    A role-based project task management system built with Spring Boot, MySQL,
+                    HTML, CSS, and JavaScript.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h6 class="text-uppercase small fw-bold">Quick Links</h6>
+                <ul class="list-unstyled small">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="#" onclick="return false;">About</a></li>
+                    <li><a href="#" onclick="return false;">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h6 class="text-uppercase small fw-bold">Contact</h6>
+                <ul class="list-unstyled small text-muted">
+                    <li><i class="bi bi-envelope"></i> <a href="mailto:support@taskguard.example">support@taskguard.example</a></li>
+                    <li><i class="bi bi-telephone"></i> <a href="tel:+910000000000">+91 00000 00000</a></li>
+                    <li><i class="bi bi-geo-alt"></i> Tiruchirappalli, Tamil Nadu, India</li>
+                </ul>
+            </div>
+        </div>
+        <hr class="border-secondary">
+        <p class="text-center text-muted small mb-0">
+            &copy; <span id="currentYear"></span> TaskGuard. All rights reserved.
+        </p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

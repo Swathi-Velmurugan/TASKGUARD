@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskGuard - Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="tg-topbar d-flex align-items-center justify-content-between px-3">
+    <span class="tg-brand"><i class="bi bi-shield-lock-fill"></i>TaskGuard</span>
+    <span class="text-light small" id="userGreeting"></span>
+</nav>
+
+<div class="d-flex">
+    <div class="tg-sidebar" style="width:230px;">
+        <div class="list-group rounded-0" id="sidebarNav"></div>
+    </div>
+
+    <div class="flex-grow-1 p-4">
+        <h3 class="mb-1" id="dashboardTitle">Dashboard</h3>
+        <p class="text-muted mb-4" id="dashboardSubtitle"></p>
+
+        <div class="row g-3 mb-4" id="statCards"></div>
+
+        <div class="row g-3">
+            <div class="col-lg-7">
+                <div class="card shadow-sm">
+                    <div class="card-header">Task Status Overview</div>
+                    <div class="card-body" id="statusChart">
+                        <p class="text-muted small mb-0">Not applicable for your role.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card shadow-sm">
+                    <div class="card-header">About this project</div>
+                    <div class="card-body">
+                        <p class="small text-muted mb-0">
+                            TaskGuard is a project task management system with role-based access for
+                            Project Directors, Project Managers, and Team Contributors. Use the sidebar
+                            to manage initiatives, milestones, tasks, and submissions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

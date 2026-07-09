@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskGuard - Initiatives</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="tg-topbar d-flex align-items-center justify-content-between px-3">
+    <span class="tg-brand"><i class="bi bi-shield-lock-fill"></i>TaskGuard</span>
+    <span class="text-light small" id="userGreeting"></span>
+</nav>
+
+<div class="d-flex">
+    <div class="tg-sidebar" style="width:230px;">
+        <div class="list-group rounded-0" id="sidebarNav"></div>
+    </div>
+
+    <div class="flex-grow-1 p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">Project Initiatives</h3>
+            <button class="btn btn-brand" id="addBtn" style="display:none;">
+                <i class="bi bi-plus-lg"></i> Add Initiative
+            </button>
+        </div>
+
+        <div class="filter-bar row g-2 align-items-end">
+            <div class="col-md-5">
+                <label class="form-label mb-1">Search by title</label>
+                <input type="text" id="searchText" class="form-control" placeholder="Search initiatives...">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label mb-1">Status</label>
+                <select id="statusFilter" class="form-select">
+                    <option value="ALL">ALL</option>
+                    <option value="PLANNING">PLANNING</option>
+                    <option value="ACTIVE">ACTIVE</option>
+                    <option value="ON_HOLD">ON_HOLD</option>
+                    <option value="COMPLETED">COMPLETED</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-outline-secondary w-100" id="clearFilterBtn">Clear</button>
+            </div>
+        </div>
+        <p class="text-muted small mt-1">
+            Note: the backend applies only one filter at a time — status takes priority over the search text.
+        </p>
+
+        <div class="card shadow-sm table-card">
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Title</th>
+                            <th>Budget (Allocated / Consumed)</th>
+                            <th>Start &rarr; Target</th>
+                            <th>Director</th>
+                            <th>Status</th>
+                            <th id="actionsHeader" style="display:none;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="initiativesTableBody"></tbody>
+                </table>
+                <div class="empty-state" id="emptyState" style="display:none;">
+                    <i class="bi bi-inbox"></i>
+                    No project initiatives found.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADD/EDIT MODAL -->
+<div class="modal fade" id="initiativeModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Create New Initiative</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="initiativeForm">
+                    <input type="hidden" id="initiativeId">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Project Code</label>
+                            <input type="text" id="projectCode" class="form-control" placeholder="e.g. PRJ-1001">
+                            <span class="field-error" id="projectCodeError"></span>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label">Title</label>
+                            <input type="text" id="title" class="form-control" placeholder="e.g. Cloud Automation Redesign">
+                            <span class="field-error" id="titleError"></span>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Description</label>
+                            <textarea id="description" class="form-control" rows="3" placeholder="Describe the goal of this initiative..."></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Budget Allocated (USD)</label>
+                            <input type="number" id="budgetAllocated" class="form-control" placeholder="50000.00" step="0.01">
+                            <span class="field-error" id="budgetError"></span>
+                        </div>
+                        <div class="col-md-6" id="statusField" style="display:none;">
+                            <label class="form-label">Status</label>
+                            <select id="status" class="form-select">
+                                <option value="PLANNING">PLANNING</option>
+                                <option value="ACTIVE">ACTIVE</option>
+                                <option value="ON_HOLD">ON_HOLD</option>
+                                <option value="COMPLETED">COMPLETED</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" id="startDate" class="form-control">
+                            <span class="field-error" id="startDateError"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Target End Date</label>
+                            <input type="date" id="targetEndDate" class="form-control">
+                            <span class="field-error" id="targetEndDateError"></span>
+                        </div>
+                    </div>
+                    <div class="d-grid mt-4">
+                        <button type="submit" id="saveBtn" class="btn btn-brand">Save Initiative</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/initiatives.js"></script>
+</body>
+</html>

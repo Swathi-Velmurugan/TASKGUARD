@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskGuard - Tasks</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="tg-topbar d-flex align-items-center justify-content-between px-3">
+    <span class="tg-brand"><i class="bi bi-shield-lock-fill"></i>TaskGuard</span>
+    <span class="text-light small" id="userGreeting"></span>
+</nav>
+
+<div class="d-flex">
+    <div class="tg-sidebar" style="width:230px;">
+        <div class="list-group rounded-0" id="sidebarNav"></div>
+    </div>
+
+    <div class="flex-grow-1 p-4">
+        <div class="card shadow-sm mb-3" id="welcomeBanner" style="display:none;">
+            <div class="card-body">
+                <h5 class="mb-1" id="welcomeText"></h5>
+                <p class="text-muted small mb-0">Review your assigned tasks below. You can log your hours or update the status directly from this list.</p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">Project Tasks</h3>
+            <button class="btn btn-brand" id="addBtn" style="display:none;">
+                <i class="bi bi-plus-lg"></i> Add Task
+            </button>
+        </div>
+
+        <div class="filter-bar row g-2 align-items-end">
+            <div class="col-md-4">
+                <label class="form-label mb-1">Search title / code</label>
+                <input type="text" id="searchText" class="form-control" placeholder="Search tasks...">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label mb-1">Status</label>
+                <select id="statusFilter" class="form-select">
+                    <option value="ALL">ALL</option>
+                    <option value="PENDING">PENDING</option>
+                    <option value="IN_PROGRESS">IN_PROGRESS</option>
+                    <option value="IN_REVIEW">IN_REVIEW</option>
+                    <option value="COMPLETED">COMPLETED</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-outline-secondary w-100" id="clearFilterBtn">Clear Filters</button>
+            </div>
+        </div>
+
+        <div class="card shadow-sm table-card">
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Task Code</th>
+                            <th>Title</th>
+                            <th>Priority</th>
+                            <th>Hours (Logged / Estimated)</th>
+                            <th>Assignee</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tasksTableBody"></tbody>
+                </table>
+                <div class="empty-state" id="emptyState" style="display:none;">
+                    <i class="bi bi-inbox"></i>
+                    No tasks found.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADD/EDIT MODAL (managers only) -->
+<div class="modal fade" id="taskModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Create New Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="taskForm">
+                    <input type="hidden" id="taskId">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Task Code</label>
+                            <input type="text" id="taskCode" class="form-control" placeholder="e.g. TSK-268">
+                            <span class="field-error" id="taskCodeError"></span>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label">Title</label>
+                            <input type="text" id="title" class="form-control" placeholder="e.g. Provision Backend JWT Core Filter">
+                            <span class="field-error" id="titleError"></span>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Description</label>
+                            <textarea id="description" class="form-control" rows="2" placeholder="Describe exact endpoints or features expected..."></textarea>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Priority</label>
+                            <select id="priority" class="form-select">
+                                <option value="LOW">LOW</option>
+                                <option value="MEDIUM">MEDIUM</option>
+                                <option value="HIGH" selected>HIGH</option>
+                                <option value="CRITICAL">CRITICAL</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Estimated Hours</label>
+                            <input type="number" id="estimatedHours" class="form-control" placeholder="40">
+                            <span class="field-error" id="estimatedHoursError"></span>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Due Date</label>
+                            <input type="date" id="dueDate" class="form-control">
+                            <span class="field-error" id="dueDateError"></span>
+                        </div>
+                        <div class="col-md-3" id="statusField" style="display:none;">
+                            <label class="form-label">Status</label>
+                            <select id="status" class="form-select">
+                                <option value="PENDING">PENDING</option>
+                                <option value="IN_PROGRESS">IN_PROGRESS</option>
+                                <option value="IN_REVIEW">IN_REVIEW</option>
+                                <option value="COMPLETED">COMPLETED</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Parent Initiative</label>
+                            <select id="initiativeId" class="form-select"></select>
+                            <span class="field-error" id="initiativeIdError"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Milestone (optional)</label>
+                            <select id="milestoneId" class="form-select">
+                                <option value="">No milestone linkage</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Assignee Account ID (optional)</label>
+                            <input type="number" id="assigneeId" class="form-control" placeholder="e.g. 3">
+                            <span class="text-muted small">Ask your Director for the contributor's account ID.</span>
+                        </div>
+                    </div>
+                    <div class="d-grid mt-4">
+                        <button type="submit" id="saveBtn" class="btn btn-brand">Finalize Task Configuration</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/tasks.js"></script>
+</body>
+</html>
