@@ -3,7 +3,7 @@
 // Shared helpers used by every page
 // ============================================
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://taskguard-1.onrender.com";
 const LOGIN_URL = BASE_URL + "/login";
 
 const INITIATIVES_URL = BASE_URL + "/api/initiatives";
