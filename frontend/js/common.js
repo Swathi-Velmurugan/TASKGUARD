@@ -93,7 +93,7 @@ function checkLogin() {
 // Re-check the session whenever a cached page is restored like this.
 window.addEventListener("pageshow", function (event) {
     if (event.persisted && !isLoggedIn()) {
-        window.location.replace("login.html");
+        window.location.replace("index.html");
     }
 });
 
@@ -102,7 +102,7 @@ function logout() {
     localStorage.removeItem("tg_email");
     localStorage.removeItem("tg_role");
     localStorage.removeItem("tg_myAccountId");
-    window.location.replace("login.html");
+    window.location.replace("index.html");
 }
 
 function getHeaders() {
